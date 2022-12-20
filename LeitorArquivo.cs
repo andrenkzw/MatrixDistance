@@ -5,7 +5,7 @@ using System.Linq;
 namespace MatrixDistance;
 public static class LeitorArquivo
 {
-    public static string[] LerArquivo (string nomeArquivo) {
+    private static string[] LerArquivo (string nomeArquivo) {
         string caminhoDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         string caminhoArquivo = Path.Combine(caminhoDesktop, nomeArquivo);
         string[] conteudo = File.ReadAllLines(caminhoArquivo);
@@ -15,7 +15,7 @@ public static class LeitorArquivo
         return conteudo;
     }
 
-    public static string LerUmaLinha (string nomeArquivo) {
+    private static string LerUmaLinha (string nomeArquivo) {
         string caminhoDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         string caminhoArquivo = Path.Combine(caminhoDesktop, nomeArquivo);
         string linha = "";
@@ -27,7 +27,7 @@ public static class LeitorArquivo
         return linha;
     }
 
-    public static int Comprimento (this string linha)
+    private static int Comprimento (this string linha)
         => linha.Count(x => x == ',') + 1;
 
     public static (int, int[,]) LerMatriz(string nomeArquivo = "matriz.txt") {
