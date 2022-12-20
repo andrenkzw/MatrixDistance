@@ -9,9 +9,8 @@ class Program
 
     static void Main(string[] args)
     {
-        int n = LeitorUsuario.LerTamanho();
-        int[,] matriz = LeitorUsuario.LerMatriz(n);
-        int[] percurso = LeitorUsuario.LerPercurso(n);
+        (int n, int[,] matriz) = LeitorArquivo.LerMatriz();
+        int[] percurso = LeitorArquivo.LerPercurso(n);
         Console.WriteLine($"A distância percorrida no percurso {string.Join(" ", percurso.ParaUsuario())} é {CalculaDistancia(matriz, percurso)} km.");
     }
 }
