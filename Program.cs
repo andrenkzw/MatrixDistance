@@ -4,6 +4,16 @@ using System.Linq;
 namespace MatrixDistance;
 class Program
 {
+    static int LerTamanhoUsuario() {
+        int n;
+        Console.WriteLine($"Insira o número de cidades:");
+        while (!int.TryParse(Console.ReadLine(), out n)) {
+            Console.WriteLine("Erro na leitura.");
+            Console.WriteLine($"Insira o número de cidades:");
+        }
+        return n;        
+    }
+
     static int LerDistUsuario(int i, int j) {
         int dist;
         Console.WriteLine($"Insira a distância entre a cidade {i} e a cidade {j}:");
@@ -44,8 +54,9 @@ class Program
 
     static void Main(string[] args)
     {
-        int[,] matriz = LerMatrizUsuario();
-        int[] percurso = LerPercursoUsuario();
+        int n = LerTamanhoUsuario();
+        int[,] matriz = LerMatrizUsuario(n);
+        int[] percurso = LerPercursoUsuario(n);
         Console.WriteLine($"A distância percorrida no percurso {string.Join(" ", percurso.Select(x => x+1))} é {CalculaDistancia(matriz, percurso)} km.");
     }
 }
