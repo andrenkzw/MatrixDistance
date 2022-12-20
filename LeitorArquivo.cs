@@ -8,6 +8,7 @@ public static class LeitorArquivo
     private static string[] LerArquivo (string nomeArquivo) {
         string caminhoDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         string caminhoArquivo = Path.Combine(caminhoDesktop, nomeArquivo);
+        using var reader = new StreamReader(caminhoArquivo);
         string[] conteudo = File.ReadAllLines(caminhoArquivo);
         if (conteudo.Length == 0) {
             Console.WriteLine($"Aviso: arquivo {nomeArquivo} vazio.");
@@ -18,6 +19,7 @@ public static class LeitorArquivo
     private static string LerUmaLinha (string nomeArquivo) {
         string caminhoDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         string caminhoArquivo = Path.Combine(caminhoDesktop, nomeArquivo);
+        using var reader = new StreamReader(caminhoArquivo);
         string linha = "";
         try {
             linha = File.ReadLines(caminhoArquivo).First();
